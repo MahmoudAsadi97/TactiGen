@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: tactigen_db
+    restart: always
+    environment:
+      POSTGRES_USER: tactigen
+      POSTGRES_PASSWORD: tactigen
+      POSTGRES_DB: tactigen
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./storage/schemas.sql:/docker-entrypoint-initdb.d/schemas.sql
+
+  app:
+    build: .
+    container_name: tactigen_app
+    restart: always
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+      - ./knowledge:/app/knowledge
+    depends_on:
+      - postgres
+    command: streamlit run app/streamlit_app.py --server.port=8501 --server.address=0.0.0.0
+
+volumes:
+  postgres_data:
