@@ -5,6 +5,9 @@ heuristic), reports top-1 accuracy when ground truth is available, and the class
 distribution of predictions. Saved to outputs/run_logs/eval_anticipation_<clip_id>.json.
 Run: python evaluation/evaluate_anticipation.py
 """
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import json
 from collections import Counter
 from pathlib import Path

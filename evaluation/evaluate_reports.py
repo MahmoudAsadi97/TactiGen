@@ -6,6 +6,9 @@ flags from analyst feedback, and checks that confidence values are present.
 Saved to outputs/run_logs/eval_reports_<clip_id>.json.
 Run: python evaluation/evaluate_reports.py
 """
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import json
 import re
 from pathlib import Path
