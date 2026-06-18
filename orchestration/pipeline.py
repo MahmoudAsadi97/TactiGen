@@ -61,5 +61,25 @@ class TactiGenPipeline:
         with open(f"outputs/run_logs/{run_id}.json", "w") as f:
             json.dump(run_log, f, indent=2)
 
+        # MLflow experiment tracking (non-critical: degrades gracefully if unavailable)
+        try:
+            import mlflow
+            with mlflow.start_run(run_name=run_id):
+                mlflow.log_param("clip_id", clip_id)
+                mlflow.log_param("localization_model", "yolov8m")
+                mlflow.log_param("anticipation_model", "football_transformer")
+                mlflow.log_metric("localization_confidence", context.get("localization_confidence", 0))
+                mlflow.log_metric("anticipation_confidence",
+                                  context.get("anticipation_result", {}).get("confidence", 0))
+                mlflow.log_metric("overload_ratio",
+                                  context.get("tactical_metrics", {}).get("overload_ratio", 0))
+                mlflow.log_metric("compactness_score",
+                                  context.get("tactical_metrics", {}).get("compactness_score", 0))
+                report_path = f"outputs/reports/{clip_id}_report.txt"
+                if Path(report_path).exists():
+                    mlflow.log_artifact(report_path)
+        except Exception as e:
+            logger.warning(f"MLflow logging failed (non-critical): {e}")
+
         logger.success(f"=== Pipeline complete: {clip_id} ===")
         return context
