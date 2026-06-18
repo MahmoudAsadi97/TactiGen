@@ -1,0 +1,47 @@
+phases:
+  - in_possession
+  - out_of_possession
+  - attacking_transition
+  - defensive_transition
+  - set_piece
+
+spatial_concepts:
+  - width
+  - depth
+  - compactness
+  - line_height
+  - overload
+  - underload
+  - half_space_occupation
+  - central_density
+
+pressing_concepts:
+  - high_press
+  - mid_block
+  - low_block
+  - counter_press
+  - pressing_trap
+
+attacking_patterns:
+  - switch_of_play
+  - wide_overload
+  - right_side_overload
+  - left_side_overload
+  - third_man_run
+  - cutback_zone_entry
+  - cross_from_wide_area
+
+defensive_patterns:
+  - compact_block
+  - failed_shift
+  - exposed_fullback
+  - weak_side_gap
+  - broken_defensive_line
+  - general_possession
+
+valid_recommendations:
+  - defensive_adjustment
+  - pressing_trigger
+  - width_instruction
+  - recovery_run
+  - attacking_overload_exploitation
