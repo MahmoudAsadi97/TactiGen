@@ -61,14 +61,24 @@ class LocalizationAgent:
 class ActionPredictionAgent:
     def run(self, context: dict) -> dict:
         logger.info("[Agent] Predicting action...")
-        from action_anticipation.faantra_inference import FAAntraInference
-        predictor = FAAntraInference()
-        result = predictor.predict(
-            clip_id=context["clip_id"],
-            frame_paths=context.get("frame_paths", []),
-            timestamp=context.get("segments", [{}])[0].get("start_time", 0.0)
-        )
-        context["anticipation_result"] = result.model_dump()
+        timestamp = context.get("segments", [{}])[0].get("start_time", 0.0)
+        try:
+            from action_anticipation.faantra_inference import FAAntraInference
+            predictor = FAAntraInference()
+            result = predictor.predict(
+                clip_id=context["clip_id"],
+                frame_paths=context.get("frame_paths", []),
+                timestamp=timestamp,
+            )
+            context["anticipation_result"] = result.model_dump()
+        except Exception as e:
+            logger.warning(f"Transformer path unavailable ({e}); using heuristic anticipation fallback.")
+            from action_anticipation.anticipation_schema import AnticipationResult
+            context["anticipation_result"] = AnticipationResult(
+                clip_id=context["clip_id"], timestamp=timestamp,
+                predicted_action="pass", confidence=0.42,
+                model_used="heuristic_fallback",
+            ).model_dump()
         return context
 
 

@@ -5,6 +5,9 @@ stub (placeholders when no labelled ground truth is available), and a visual
 inspection flag. Results saved to outputs/run_logs/eval_localization_<clip_id>.json.
 Run: python evaluation/evaluate_localization.py
 """
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import json
 import statistics
 from pathlib import Path

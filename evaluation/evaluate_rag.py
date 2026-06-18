@@ -6,6 +6,9 @@ rate (report sentences containing no metric value and no source_id).
 Saved to outputs/run_logs/eval_rag_<clip_id>.json.
 Run: python evaluation/evaluate_rag.py
 """
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import json
 import re
 from pathlib import Path
