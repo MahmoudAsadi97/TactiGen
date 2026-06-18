@@ -1,0 +1,13 @@
+source_id,title,url,license_or_terms,used_for,last_checked
+wide_overload_kb,TactiGen Tactical Knowledge — Wide Overload,local,original_work,rag_retrieval,2026-06-15
+defensive_compactness_kb,TactiGen Tactical Knowledge — Defensive Compactness,local,original_work,rag_retrieval,2026-06-15
+high_press_kb,TactiGen Tactical Knowledge — High Press,local,original_work,rag_retrieval,2026-06-15
+team_width_kb,TactiGen Tactical Knowledge — Team Width,local,original_work,rag_retrieval,2026-06-15
+overload_underload_kb,TactiGen Tactical Knowledge — Overload/Underload,local,original_work,rag_retrieval,2026-06-15
+defensive_line_height_kb,TactiGen Tactical Knowledge — Defensive Line Height,local,original_work,rag_retrieval,2026-06-15
+attacking_transition_kb,TactiGen Tactical Knowledge — Attacking Transition,local,original_work,rag_retrieval,2026-06-15
+defensive_transition_kb,TactiGen Tactical Knowledge — Defensive Transition,local,original_work,rag_retrieval,2026-06-15
+cross_creation_kb,TactiGen Tactical Knowledge — Cross Creation,local,original_work,rag_retrieval,2026-06-15
+pressing_intensity_kb,TactiGen Tactical Knowledge — Pressing Intensity,local,original_work,rag_retrieval,2026-06-15
+soccernet,SoccerNet Dataset,https://www.soccer-net.org/,research_only,video_and_action_labels,2026-06-15
+statsbomb_open,StatsBomb Open Data,https://github.com/statsbomb/open-data,CC_BY-SA_4.0,event_validation,2026-06-15
