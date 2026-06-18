@@ -1,0 +1,48 @@
+You are analyzing football clip: {clip_id}
+Time window: {time_window}
+
+== EVIDENCE OBJECT ==
+{evidence_json}
+
+== RETRIEVED TACTICAL KNOWLEDGE ==
+{retrieved_passages}
+
+== TACTICAL ONTOLOGY ==
+Valid patterns: {valid_patterns}
+Valid phases: {valid_phases}
+
+== TASK ==
+Generate a structured tactical coaching report in the six-section format from your system instructions.
+
+After the six-section natural-language report, output a JSON block labeled STRUCTURED_REPORT on its own line, followed by the JSON:
+
+STRUCTURED_REPORT
+{
+  "clip_summary": {
+    "main_phase": "<ontology_phase>",
+    "primary_pattern": "<ontology_pattern>",
+    "anticipated_action": "<action_class>",
+    "confidence": <float>
+  },
+  "metrics": {
+    "team_width": <float>,
+    "compactness": <float>,
+    "overload_ratio": <float>,
+    "defensive_line_height": <float>
+  },
+  "evidence": [
+    {
+      "timestamp_start": <float>,
+      "timestamp_end": <float>,
+      "claim": "<claim_text>",
+      "support": "<metric_or_model_output>"
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "<ontology_recommendation_type>",
+      "text": "<recommendation_text>"
+    }
+  ],
+  "limitations": ["<limitation_text>"]
+}
